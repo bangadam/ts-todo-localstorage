@@ -85,18 +85,42 @@ todoList.addEventListener("dblclick", (e) => {
 });
 
 // filter buttons event listener
-document.querySelector(".filters")!.addEventListener("click", (e) => {
-	const target = e.target as HTMLElement;
-	if (target.classList.contains("filter-btn")) {
-		currentFilter = target.dataset.filter as any;
-		document.querySelectorAll(".filter-btn").forEach((btn) => {
-			btn.classList.remove("active");
-		});
+function handleFilterClick(event: Event) {
+	const target = event.target as HTMLButtonElement;
+	if (!target.classList.contains('filter-btn')) return;
 
-		target.classList.add("active");
-		renderTodos();
-	}
-});
+	// Remove active class from all filter buttons
+	document.querySelectorAll('.filter-btn').forEach(btn => {
+		btn.classList.remove('active');
+	});
+
+	// Add active class to clicked button
+	target.classList.add('active');
+
+	// Get the filter value and apply filtering
+	const filter = target.dataset.filter;
+	filterTodos(filter);
+}
+
+// Add event listener to the filters container
+document.querySelector('.flex.justify-center.gap-2')?.addEventListener('click', handleFilterClick);
+
+function filterTodos(filter: string = 'all') {
+	const todos = document.querySelectorAll('.todo-item');
+	
+	todos.forEach(todo => {
+		switch(filter) {
+			case 'active':
+				todo.classList.toggle('hidden', todo.classList.contains('completed'));
+				break;
+			case 'completed':
+				todo.classList.toggle('hidden', !todo.classList.contains('completed'));
+				break;
+			default: // 'all'
+				todo.classList.remove('hidden');
+		}
+	});
+}
 
 // save todos to local storage
 function saveTodos(): void {

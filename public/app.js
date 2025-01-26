@@ -56,17 +56,33 @@ todoList.addEventListener("dblclick", (e) => {
     });
   }
 });
-document.querySelector(".filters").addEventListener("click", (e) => {
-  const target = e.target;
-  if (target.classList.contains("filter-btn")) {
-    currentFilter = target.dataset.filter;
-    document.querySelectorAll(".filter-btn").forEach((btn) => {
-      btn.classList.remove("active");
-    });
-    target.classList.add("active");
-    renderTodos();
-  }
-});
+function handleFilterClick(event) {
+  const target = event.target;
+  if (!target.classList.contains("filter-btn"))
+    return;
+  document.querySelectorAll(".filter-btn").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  target.classList.add("active");
+  const filter = target.dataset.filter;
+  filterTodos(filter);
+}
+document.querySelector(".flex.justify-center.gap-2")?.addEventListener("click", handleFilterClick);
+function filterTodos(filter = "all") {
+  const todos2 = document.querySelectorAll(".todo-item");
+  todos2.forEach((todo) => {
+    switch (filter) {
+      case "active":
+        todo.classList.toggle("hidden", todo.classList.contains("completed"));
+        break;
+      case "completed":
+        todo.classList.toggle("hidden", !todo.classList.contains("completed"));
+        break;
+      default:
+        todo.classList.remove("hidden");
+    }
+  });
+}
 function saveTodos() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }

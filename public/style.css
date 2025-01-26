@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 body {
-	font-family: Arial, sans-serif;
-	max-width: 500px;
-	margin: 20px auto;
-	padding: 20px;
+	font-family: 'Plus Jakarta Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .container {
 	background: #f9f9f9;
@@ -32,26 +34,113 @@ button:hover {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px;
-	margin: 5px 0;
-	background: white;
-	border: 1px solid #ddd;
+	padding: 1rem;
+	background-color: white;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 0.75rem;
+	transition: all 0.2s;
 }
+
 .todo-item.completed {
-	background: #d4edda;
+	opacity: 0.5;
+}
+.todo-item.completed span {
 	text-decoration: line-through;
+	color: #666;
 }
 
 .filters {
 	margin: 15px 0;
 }
 .filter-btn {
+	color: #666;
+	transition: all 0.2s;
 	padding: 5px 10px;
 	margin-right: 5px;
-	background: #e0e0e0;
-	color: #333;
+}
+.filter-btn:hover {
+	color: white;
+	background-color: rgba(255, 255, 255, 0.1);
 }
 .filter-btn.active {
-	background: #4caf50;
+	background-color: white;
+	color: black;
+}
+
+/* Custom checkbox styles */
+input[type="checkbox"] {
+	appearance: none;
+	width: 1.2rem;
+	height: 1.2rem;
+	border: 2px solid white;
+	border-radius: 6px;
+	margin-right: 0.75rem;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+input[type="checkbox"]:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+input[type="checkbox"]:checked {
+	background-color: white;
+	border-color: white;
+}
+
+input[type="checkbox"]:checked::after {
+	content: '✓';
+	position: absolute;
+	color: black;
+	font-size: 0.8rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Delete button */
+.delete-btn {
+	background: none;
+	border: none;
+	color: #666;
+	padding: 6px;
+	border-radius: 6px;
+	transition: all 0.2s;
+}
+
+.delete-btn:hover {
+	background-color: red;
+	color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+
+.toggle-btn {
+	padding: 5px 10px;
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+}
+
+.toggle-btn:hover {
+	background-color: green;
 	color: white;
 }
