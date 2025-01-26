@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bun Todo List With TypeScript</title>
+		<!-- style css -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1>Bun Todo List With TypeScript</h1>
+
+			<!-- filters -->
+			<div class="filters">
+				<button class="active filter-btn" data-filter="all">All</button>
+				<button class="filter-btn" data-filter="active">Active</button>
+				<button class="filter-btn" data-filter="completed">Completed</button>
+			</div>
+
+			<input type="text" id="todoInput" placeholder="Add new todo..." />
+			<button id="addTodo">Add</button>
+			<ul id="todoList"></ul>
+		</div>
+
+		<!-- script js -->
+		<script src="app.js"></script>
+	</body>
+</html>

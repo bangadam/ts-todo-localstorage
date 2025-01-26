@@ -1,0 +1,13 @@
+{
+  "dependencies": {},
+  "name": "ts-todo-localstorage",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/web": "^0.0.198"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
